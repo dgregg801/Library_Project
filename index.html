@@ -25,8 +25,21 @@
                 <th>Author</th>
                 <th>Read</th>
               </tr>
+              <tr>
+                  <td><label for="title">Title:</label></td>
+                  <td><label for="author">Author:</label></td>
+                  <td><label for="read">Read:</label></td>
+              </tr>
+              <tr>
+                  <td><input type="text" id="title" name="title" ></td>
+                  <td><input type="text" id="author" name="author"></td>
+                  <td><input type="checkbox" id="read" name="read"></td>
+              </tr>
+              <tr>
+                  <td colspan="3"><button type="submit" id="addBook">Add New Book</button></td>
+              </tr>
             </thead>
-            <tbody>
+            <tbody id="bookList">
               <tr>
                 <td>Name of the Wind</td>
                 <td>Patrick Rothfuss</td>

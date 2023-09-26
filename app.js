@@ -117,12 +117,12 @@ class Library {
       if (index !== -1) {
         this.books.splice(index, 1);
       }
-      this.displayBooks(); // Refresh the book list after removal
+      this.displayBooks(); 
     };
     
     Library.prototype.displayBooks = function () {
       const tableBody = document.getElementById("bookList");
-      tableBody.innerHTML = ""; // Clear the existing table rows
+      tableBody.innerHTML = ""; 
     
       this.books.forEach((book) => {
         const newRow = document.createElement("tr");
@@ -130,10 +130,9 @@ class Library {
           <td>${book.title}</td>
           <td>${book.author}</td>
           <td>${book.read ? "Yes" : "No"}</td>
-          <td><button class="remove-button" data-id="${book.id}">Remove</button></td>
-        `;
+          <td><button class="remove-button" data-id="${book.id}">Remove</button></td>`;
     
-        // Add click event listener to the Remove button
+        
         const removeButton = newRow.querySelector(".remove-button");
         removeButton.addEventListener("click", (event) => {
           const idToRemove = parseInt(event.target.getAttribute("data-id"));

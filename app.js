@@ -23,6 +23,14 @@ class Library {
       });
     }
 
+    ////markRead(id, checkbox) {
+     // const book = this.books.find((book) => book.id === id);
+      //if (book) {
+       // book.read = checkbox.checked;
+       // this.displayBooks(); 
+     // }
+    //}
+
   markRead(id, checkbox) {
     for (let i = 0; i < this.books.length; i++) {
       if (this.books[i].id === id) {
@@ -34,6 +42,7 @@ class Library {
     }
   }
 
+
   addBook() {
     const titleInput = document.getElementById("title");
     const authorInput = document.getElementById("author");
@@ -41,9 +50,15 @@ class Library {
 
     const title = titleInput.value;
     const author = authorInput.value;
-    const read = readCheckbox.checked;
+    const read = readCheckbox.value;
+    console.log(read);
+    readCheckbox.addEventListener("change", () => {
+      this.markRead(newBook.id, readCheckbox);
+    })
 
     const newBook = new Book(this.bookCount + 1, title, author, read);
+    //this.books.push(newBook);
+    //get new book in this.books array
 
     const newRow = document.createElement("tr");
 
@@ -59,6 +74,7 @@ class Library {
     removeButton.textContent = "Remove";
     removeButton.addEventListener("click", () => {
         this.removeBook(newBook.id);
+        console.log("this.removeBook");
     newRow.remove();
     });
   
@@ -79,10 +95,13 @@ class Library {
   
   removeBook(id) {
     const index = this.books.findIndex((book) => book.id === id);
+    console.log(this.books, id);
+    console.log(index);
     if (index !== -1) {
       this.books.splice(index, 1);
+      this.displayBooks();
     }
-    this.displayBooks();
+    
   }
 
   displayBooks() {
@@ -101,6 +120,7 @@ class Library {
         removeButton.addEventListener("click", (event) => {
             const idToRemove = parseInt(event.target.getAttribute("data-id"));
             this.removeBook(idToRemove);
+            
         });
         tableBody.appendChild(newRow);
     });
@@ -108,11 +128,14 @@ class Library {
 
 }
 
+ const myLibrary = new Library();
+  
+  
  
-  
-  const myLibrary = new Library();
-  
-  Library.prototype.removeBook = function (id) {
+ 
+ 
+ 
+ /*Library.prototype.removeBook = function (id) {
       const index = this.books.findIndex((book) => book.id === id);
       if (index !== -1) {
         this.books.splice(index, 1);
@@ -142,6 +165,7 @@ class Library {
         tableBody.appendChild(newRow);
       });
     };
+    */
     
 
 
